@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     int temp = user_id(userName.getText().toString(), passWord.getText().toString());
                     if(temp > 0){
                         toast_maker("Welcome!");
-//                        to_pass(temp);
-                        to_pass_basic();
+                        to_pass(temp);
+//                        to_pass_basic();
                     }
                     else{
                         passWord.setBackgroundColor(Color.parseColor("#b53c68"));

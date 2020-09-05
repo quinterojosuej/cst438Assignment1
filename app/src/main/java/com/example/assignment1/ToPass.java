@@ -1,15 +1,20 @@
 package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.assignment1.db.AppDatabase;
+import com.example.assignment1.db.UserDAO;
+
 public class ToPass extends AppCompatActivity {
 
     public static final String TO_PASS_ID = "com.example.cst438_project1.ToPass";
+    UserDAO myUserDAO;
 
     TextView textView;
 
@@ -18,17 +23,29 @@ public class ToPass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_pass);
 
+        myUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .getUserDAO();
+
         get_screen();
+    }
+
+    public String get_user(int id){
+        User temp = myUserDAO.getUserById(id);
+        return temp.getUserName();
     }
 
 //    To get the activity attributes
     public void get_screen(){
         textView = findViewById(R.id.textView2);
 
-//        Intent incoming = getIntent();
-//        int id = incoming.getIntExtra(TO_PASS_ID, -1);
+        Intent incoming = getIntent();
+        int id = incoming.getIntExtra(TO_PASS_ID, -1);
 
-        textView.setText("WELCOME! din_djarin");
+        String temp = get_user(id);
+
+        textView.setText("WELCOME! " + temp);
 
     }
 

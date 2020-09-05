@@ -17,10 +17,13 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
+//    For the intent test.
     @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.assignment1", appContext.getPackageName());
+    public void intentTest(){
+        Context app = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        int test_id = ToPass.ToPassIntent(app, 2).getIntExtra(ToPass.TO_PASS_ID, -1);
+
+        assertEquals(2, test_id);
     }
 }
