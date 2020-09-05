@@ -28,7 +28,7 @@ public class ToPass extends AppCompatActivity {
 //        Intent incoming = getIntent();
 //        int id = incoming.getIntExtra(TO_PASS_ID, -1);
 
-        textView.setText("WELCOME!");
+        textView.setText("WELCOME! din_djarin");
 
     }
 
