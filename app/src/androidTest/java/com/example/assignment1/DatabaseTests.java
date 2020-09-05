@@ -57,20 +57,21 @@ public class DatabaseTests {
 
 //    We get the user and determine if the query returns a user, then it exists
     @Test
-    public void verifyUser() throws Exception{
+    public void verifyUsername() throws Exception{
         User user = new User("Misael", "Guijarro");
         userDAO.insert(user);
 
         boolean temp;
 
-        if(userDAO.getUserByUsername("Misael") == null){
-            temp = false;
+        if(userDAO.getUserByUsername("Misael").getUserName().equals("Misael")){
+            temp = true;
         }
         else{
-            temp = true;
+            temp = false;
         }
 
         assertTrue(temp);
+//        assertEquals("Misael", my_user_username);
     }
 
 //    To verify the password we need to know if the user exists, then we
